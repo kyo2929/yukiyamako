@@ -1,24 +1,37 @@
-# README
+# 雪山子
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+### サイトテーマ
+行きたいスキー場を検索したり、自分が行った際の写真を投稿したりきるレビューサイト
 
-* Ruby version
+### テーマを選んだ理由
+もともとスノーボードをするのが好きで、冬はスキー場に行くことが多いのですが、同じスキー場にばかり行くようになってしまい、
+いざ違うスキー場に行くとなってもどんなスキー場があるのかわからない状態でした。
 
-* System dependencies
+スキー場が一覧で見れて、他の人がどう感じたかを見ることができるサイトがあれば便利だなと考えました。
+また、よくスキー場に行く人だけでなく初めて、もしくは久しぶりにスキー、スノーボードをしようと思った人達の助けにもなると考えこのテーマにしました。
 
-* Configuration
+### ターゲットユーザー
+- よくスキー場に行く人
+- 初めてスキー場に行こうと思う人
+- 久しぶりにスキー場に行こうと思う人
 
-* Database creation
 
-* Database initialization
+### 主な利用シーン
+- 行きたいスキー場を検索するとき
+- 自分が行った際の投稿をするとき
+- スキー場に行った人の感想を知りたいとき
 
-* How to run the test suite
+## 設計書
+後ほど作成予定
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- Mac OS : 13.4.1 (c)（22F770820d）
+- 言語 : HTML CSS JavaScript Ruby SQL
+- フレームワーク : Ruby on Rails
+- JSライブラリ : JQuery
+- IDE : Cloud9
 
-* Deployment instructions
-
-* ...
+## 使用素材
+あった後ほど記載

@@ -7,6 +7,11 @@ devise_for :customers,skip: [:passwords], controllers: {
   sessions: 'public/sessions'
 }
 
+# ゲストログイン用
+devise_scope :customer do
+  post "customer/guest_sign_in", to: "customer/sessions#guest_sign_in"
+end
+
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -20,20 +25,25 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     
     resources :posts, only: [:index, :show, :edit, :update]
-    resources :public, only: [:index, :show, :edit, :update]
-    resources :prefecture, only: [:index, :edit, :create, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :prefectures, only: [:index, :edit, :create, :update]
     resources :ski_resorts, only: [:new, :index, :show, :create, :edit, :update]
     
     get 'top' => 'homes#top'
   end
   
   # 顧客用
-  namespace :public do
+  scope module: :public do
     resources :posts, only: [:new, :index, :show, :create, :edit, :update]
     resources :prefecture, only: [:show]
     resources :ski_resorts, only: [:index, :show]
     
     get 'homes/about' => 'homes#about'
+    get 'customers/mypage' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/information' => 'customers#update'
+    get  'customers/confirm_withdraw' => 'customers#confirm_withdraw'
+    patch  'customers/withdraw' => 'customers#withdraw'
   end
   
 

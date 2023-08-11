@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="offset-1">
+  <h2 class="bg-light d-inline-block">新規会員登録</h2>
+<div><%= flash[:notice] %></div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "publics/shared/error_messages", resource: resource %>
+
+  <div class="mt-2">
+    <table>
+      <tr>
+        <td class="py-2">名前</td>
+        <td style="width:70px"><%= f.label :（姓） %></td>
+        <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder:"令和" %></td>
+        <td class="ml-5" style="width:70px"><%= f.label :（名） %></td>
+        <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder:"道子" %></td>
+      </tr>
+      <tr>
+        <td class="py-2">フリガナ</td>
+        <td><%= f.label :名前 %></td>
+        <td><%= f.text_field :naae, autofocus: true, autocomplete: "name", placeholder:"レイワ" %></td>
+      </tr>
+      <tr>
+        <td class="py-2"><%= f.label :メールアドレス %></td>
+        <td></td>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com" %></td>
+      </tr>
+      <tr>
+        <td class="py-2"><%= f.label :パスワード（6文字以上） %></td>
+        <td></td>
+        <td>
+          <% if @minimum_password_length %>
+          <% end %><%= f.password_field :password, autocomplete: "new-password" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="py-2"><%= f.label :パスワード（確認用） %></td>
+        <td></td>
+        <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+      </tr>
+      <tr>
+        <td class="py-2"></td>
+        <td></td>
+        <td><%= f.submit "新規登録", class:'btn btn-success' %></td>
+      </tr>
+    </table>
+  </div>
+  <% end %>
+<%= render "public/shared/links" %>
+
+<h4 class="mt-2 bg-light d-inline-block">既に登録済みの方</h4>
+ <P class="ml-2"><%= link_to "こちら", new_session_path(resource_name) %>からログインしてください</p>
+  </div>
+</div>

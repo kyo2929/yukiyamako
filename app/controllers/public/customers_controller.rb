@@ -30,17 +30,19 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  private
-
-  def customer_params
-    params.require(:customer).permit(:name,:email)
-  end
-
   def ensure_guest_user
-    @user = Customer.find(params[:id])
-    if @user.guest_user?
+    @customer = Customer.find(current_customer.id)
+    if @customer.guest_user?
       redirect_to root_path , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:name, :email, :introduction, :profile_image)
+  end
+
+
 
 end

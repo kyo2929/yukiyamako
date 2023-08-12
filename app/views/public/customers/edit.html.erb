@@ -2,12 +2,17 @@
   <h3 class="bg-light d-inline-block mb-2 offset-1 p-1">会員情報編集</h3>
    <div class="my-3 ml-2">
     <%= flash[:notice] %>
+      <%= form_with model: @customer,url: customers_information_path, local: true do |f| %>
+      
       <table>
-       <%= form_with model: @customer,url: customers_information_path, local: true do |f| %>
+        <tr>
+          <td class="py-2">プロフィール画像</td>
+          <td><%= f.file_field :profile_image, accept: "image/*" %></td>
+        </tr>
         <tr>
           <td class="py-2">名前</td>
           <td class="pl-5">
-            <%= f.text_field :name, autofocus: true, id:"inputLastName", placeholder:"名前" %>
+            <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前" %>
           </td>
         </tr>
         <tr>

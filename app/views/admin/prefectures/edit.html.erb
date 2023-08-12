@@ -1,0 +1,26 @@
+<% if @prefecture.errors.any? %>
+  <div>
+    <%= @prefecture.errors.count %>errors prohibited this obj form being saved:
+     <ul>
+     <% @prefecture.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+     <% end %>
+     </ul>
+  </div>
+<% end %>
+
+
+  <div class="row mt-4">
+    <div class="col-lg-7">
+      <h4 class="bg-light d-inline-block mb-2 offset-2 p-1"><b>都道府県編集</b></h4>
+      <div class="ml-3">
+        <div class="flex-row pt-5">
+          <%= form_with model: @prefecture, url: admin_prefecture_path do |f| %>
+            <span class="pl-5"><b><%= f.label :name, '都道府県名' %></b></span>
+            <span class="pl-5"><%= f.text_field :name %></span>
+            <span class="pl-5"><%= f.submit '変更を保存', class:"btn btn-sm  btn-success" %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

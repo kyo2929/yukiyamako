@@ -1,2 +1,46 @@
-<h1>Admin::Prefectures#index</h1>
-<p>Find me in app/views/admin/prefectures/index.html.erb</p>
+<% if @prefecture.errors.any? %>
+  <div>
+    <%= @prefecture.errors.count %>errors prohibited this obj form being saved:
+     <ul>
+     <% @prefecture.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+     <% end %>
+     </ul>
+  </div>
+<% end %>
+
+<div class="container ml-5">
+      <h4 class="bg-light d-inline-block my-4 ml-5"><b>都道府県一覧・追加</b></h4>
+      
+      <div class="row my-4 ml-1">
+          <%= form_with model: @prefecture, url: admin_prefectures_path do |f| %>
+            <span><b><%= f.label :name, '都道府県名' %></b></span>
+            <span class="pl-5"><%= f.text_field :name, placeholder:"都道府県名" %></span>
+            <span class="pl-5"><%= f.submit '新規登録', class:"btn btn-flex align-btn-cnter  btn-x btn-success" %></span>
+          <% end %>
+      </div>
+      
+        <table class="col-4 table">
+          <thead>
+            <tr class="bg-light">
+              <th><b>都道府県</b></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @prefectures.each do |prefecture| %>
+              <tr>
+                <td>
+                  <%= prefecture.name %>
+                </td>
+                <td>
+                  <%= link_to '編集する', edit_admin_prefecture_path(prefecture.id), class:"btn btn-success" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    
+
+</div>

@@ -1,2 +1,26 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <h3 class="bg-light d-inline-block mb-2 offset-1 p-1">会員情報編集</h3>
+   <div class="my-3 ml-2">
+    <%= flash[:notice] %>
+      <table>
+       <%= form_with model: @customer,url: customers_information_path, local: true do |f| %>
+        <tr>
+          <td class="py-2">名前</td>
+          <td class="pl-5">
+            <%= f.text_field :name, autofocus: true, id:"inputLastName", placeholder:"名前" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="py-2">自己紹介文</td>
+          <td class="pl-5">
+            <%= f.text_area :introduction, class: 'form-control introduction' %>
+          </td>
+        </tr>
+        <tr>
+          <td class="py-5"></td>
+          <td class=" pl-5"><%= f.submit "編集内容を保存", class:'btn btn-success' %><%= link_to "退会する", customers_confirm_withdraw_path, class:"btn btn-danger offset-3" %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+</div>

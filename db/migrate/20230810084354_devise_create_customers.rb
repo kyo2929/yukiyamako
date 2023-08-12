@@ -5,8 +5,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
     create_table :customers do |t|
       ## Database authenticatable
       t.string :name,               null: false
-      t.text :introduction,         null: false
-      t.boolean :is_deleted,        null: false
+      t.text :introduction
+      t.boolean :is_deleted,        null: false, default: "false"
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 

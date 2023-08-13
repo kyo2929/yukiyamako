@@ -1,2 +1,39 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<% if @post.errors.any? %>
+  <%= @post.errors.count%>error prohibited this obj from being saved:
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+  </h3>
+  <ul>
+
+<div>
+  <% link_to "新規投稿", new_post_path %>
+</div>
+
+<div class="container">
+  <div class="row">
+      <h4 class="bg-light">投稿一覧</h4>
+
+      <table class ="table">
+          <tr>
+              <th>プロフィール画像</th>
+              <th>名前</th>
+              <th>投稿</th>
+          </tr>
+          <% @posts.each do |posted| %>
+          <tr>
+              <td><%= posted.customer.get_profile_image(80, 80) %></td>
+              <td>
+                  <%= link_to post_path(posted.id) do %>
+                  <%= posted.customer.name %>
+                  <% end %>
+              </td>
+              <td><%= posted.body %></td>
+          </tr>
+          <% end %>
+      </table>
+  </div>
+</div>

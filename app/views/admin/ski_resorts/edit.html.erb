@@ -11,10 +11,10 @@
 
 <div class="container mt-4">
   <div class="row no-gutters">
-      <h4 class="mb-4 bg-light " style="height:30px">新規投稿</h4>
+      <h4 class="mb-4 bg-light " style="height:30px">スキー場新規登録</h4>
       <div class=" text-align-center pt-5">
         <table class="table table-borderless">
-          <%= form_with model: @post, url: posts_path do |f| %>
+          <%= form_with model: @ski_resort, url: admin_ski_resort_path(@ski_resort.id) do |f| %>
           <tr>
             <td>
             <%= f.label :image, "スキー場画像" %>
@@ -23,14 +23,14 @@
           </tr>
           <tr>
             <td>
-              <%= f.label :prefecture_id, "スキー場名" %>
-              <%= f.collection_select(:ski_resort_id, @ski_resort, :id, :name,{prompt: "--選択してください--"}) %>
+              <%= f.label :name, "スキー場名" %>
+              <%= f.text_field :name %>
             </td>
           </tr>
           <tr>
             <td>
-              <%= f.label :body, "投稿内容" %>
-              <%= f.text_area :body %>
+              <%= f.label :introduction, "スキー場説明" %>
+              <%= f.text_area :introduction %>
             </td>
           </tr>
           <tr>
@@ -40,9 +40,13 @@
             </td>
           </tr>
           <tr>
+            <td>
+              <%= f.label :address, "住所" %>
+              <%= f.text_field :address %>
+            </td>
           </tr>
           <tr>
-            <td><%= f.submit '投稿', class:"btn btn-flex align-btn-cnter  btn-x btn-success" %></td>
+            <td><%= f.submit '変更を保存', class:"btn btn-flex align-btn-cnter  btn-x btn-success" %></td>
           </tr>
           <% end %>
         </table>

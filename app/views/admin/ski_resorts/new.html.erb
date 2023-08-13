@@ -1,2 +1,55 @@
-<h1>Admin::SkiResorts#new</h1>
-<p>Find me in app/views/admin/ski_resorts/new.html.erb</p>
+<% if @ski_resort.errors.any? %>
+  <div>
+    <%= @ski_resort.errors.count %>errors prohibited this obj form being saved:
+     <ul>
+     <% @ski_resort.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+     <% end %>
+     </ul>
+  </div>
+<% end %>
+
+<div class="container mt-4">
+  <div class="row no-gutters">
+      <h4 class="mb-4 bg-light " style="height:30px">スキー場新規登録</h4>
+      <div class=" text-align-center pt-5">
+        <table class="table table-borderless">
+          <%= form_with model: @ski_resort, url: admin_ski_resorts_path do |f| %>
+          <tr>
+            <td>
+            <%= f.label :image, "スキー場画像" %>
+            <%= f.file_field :images, multiple: true  %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :name, "スキー場名" %>
+              <%= f.text_field :name %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :introduction, "スキー場紹介文" %>
+              <%= f.text_area :introduction %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :prefecture_id, "都道府県" %>
+              <%= f.collection_select(:prefecture_id, @prefecture, :id, :name,{prompt: "--選択してください--"}) %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :address, "住所" %>
+              <%= f.text_field :address %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.submit '新規登録', class:"btn btn-flex align-btn-cnter  btn-x btn-success" %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+  </div>
+</div>

@@ -22,16 +22,17 @@ class Public::PostsController < ApplicationController
     @customer = current_customer
     @posts = Post.all
     @ski_resorts = SkiResort.all
-    @prefectures = Prefecture.all
   end
 
   def show
     @post = Post.find(params[:id])
     @customer = @post.customer
+    @ski_resorts = SkiResort.all
   end
 
   def edit
     @post = Post.find(params[:id])
+    @ski_resorts = SkiResort.all
   end
 
   def update
@@ -40,6 +41,7 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "投稿できました"
       redirect_to post_path(@post.id)
     else
+      @ski_resorts = SkiResort.all
       render :edit
     end
   end

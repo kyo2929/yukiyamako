@@ -1,0 +1,49 @@
+<% if @post.errors.any? %>
+  <div>
+    <%= @post.errors.count %>errors prohibited this obj form being saved:
+     <ul>
+     <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+     <% end %>
+     </ul>
+  </div>
+<% end %>
+
+<div class="container mt-4">
+  <div class="row no-gutters">
+      <h4 class="mb-4 bg-light " style="height:30px">スキー場新規登録</h4>
+      <div class=" text-align-center pt-5">
+        <table class="table table-borderless">
+          <%= form_with model: @post, url: post_path(@post.id) do |f| %>
+          <tr>
+            <td>
+            <%= f.label :image, "投稿画像" %>
+            <%= f.file_field :images, multiple: true  %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :name, "投稿者名" %>
+              <%= f.text_field :name %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :body, "投稿内容" %>
+              <%= f.text_area :body %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :ski_resort_id, "スキー場名" %>
+              <%= f.collection_select(:ski_resort_id, @ski_resorts, :id, :name, {prompt: "--選択してください--"}) %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.submit '変更を保存', class:"btn btn-flex align-btn-cnter  btn-x btn-success" %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+  </div>
+</div>

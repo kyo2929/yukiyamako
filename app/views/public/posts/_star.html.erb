@@ -3,13 +3,13 @@
 $(document).on('turbolinks:load', function() {
   let elem = document.querySelector('#star_<%= posts.id %>');
   if (elem == null) return;
-  
+
   elem.innerHTML = "";
-  let opt = {  
+  let opt = {
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
-    score: "<%= book.star %>",
+    score: "<%= posts.star %>",
     readOnly: true,
   };
   raty(elem, opt);

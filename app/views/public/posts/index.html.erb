@@ -1,7 +1,9 @@
 
-<div>
-  <%= link_to "新規投稿", new_post_path %>
-</div>
+<p class="offset-9">
+  <%= link_to new_post_path do %>
+    <i class="fa-solid fa-circle-plus fa-2xl"></i>
+  <% end %>
+</p>
 
 <div class="container">
   <div class="row">
@@ -16,13 +18,17 @@
           </tr>
           <% @posts.each do |posted| %>
           <tr>
-              <td><%= posted.customer.get_profile_image(80, 80) %></td>
+              <td><%= image_tag posted.customer.get_profile_image(80, 80) %></td>
               <td>
-                  <%= link_to post_path(posted.id) do %>
+                <%= link_to customers_mypage_path(posted.customer.id) do %>
                   <%= posted.customer.name %>
-                  <% end %>
+                <% end %>
               </td>
-              <td><%= posted.body %></td>
+              <td>
+                <%= link_to post_path(posted.id) do %>
+                  <%= posted.body %>
+                <% end %>
+              </td>
               <td><%= render "star", posts: posted %></td>
           </tr>
           <% end %>

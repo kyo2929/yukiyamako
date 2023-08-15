@@ -1,4 +1,4 @@
-<h1>Admi<div class="container">
+<div class="container">
   <div class="row">
       <h4 class="bg-light">会員一覧</h4>
 
@@ -14,7 +14,7 @@
               <td><%= customer.id %></td>
               <td>
                   <%= link_to admin_customer_path(customer.id) do %>
-                  <%= customer.last_name %><%= customer.first_name %>
+                  <%= customer.name %>
                   <% end %>
               </td>
               <td><%= customer.email %></td>
@@ -22,6 +22,5 @@
           </tr>
           <% end %>
       </table>
-      <%= paginate @customers %>
   </div>
 </div>

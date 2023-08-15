@@ -11,7 +11,7 @@
 
 <div class="container float-left mt-4 ml-5">
   <div class="row">
-      <h4 class="bg-light d-inline-block mb-4 text-center"><b><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</b></h4>
+      <h4 class="bg-light d-inline-block mb-4 text-center"><b><%= @customer.name %>さんの会員情報編集</b></h4>
        <table class="table table-borderless">
            <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
            <tr>
@@ -27,7 +27,7 @@
            </tr>
            <tr>
                <td><%= f.label "会員ステータス" %></td>
-               
+
                    <td>
                        <span>
                            <%= f.radio_button :is_deleted, false, checked: @customer.is_deleted == false %>

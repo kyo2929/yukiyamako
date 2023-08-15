@@ -1,2 +1,41 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+  <h4 class="bg-light text-center mt-4" style="width:150px">投稿詳細</h3>
+
+  <div class="col-md-9 ml-3 mx-auto">
+  　<div class="row">
+    　  <!--写真-->
+      <div class="mr-2">
+        <% if @post.image.attached? %>
+          <% @post.image.each do |image| %>
+            <%= image_tag image.variant(resize: '500x500') %>
+          <% end %>
+        <% end %>
+      </div>
+      <!--投稿情報-->
+      <div>
+      <table>
+        <tr>
+          <th style="width:150px">投稿者名</th>
+          <th style="width:260px"><%= @post.customer.name %></th>
+        </tr>
+        <tr>
+          <th>投稿内容</th>
+          <th><%= @post.body %></th>
+        </tr>
+        <tr>
+          <th>スキー場</th>
+          <th>
+            <%= link_to ski_resort_path(@post.ski_resort_id) do %>
+              <%= @post.ski_resort.name %>
+            <% end %>
+          </th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= link_to "削除", admin_post_path(@post), class: 'btn btn-sm btn-danger', method: :delete %></th>
+        </tr>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

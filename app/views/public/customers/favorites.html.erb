@@ -1,15 +1,15 @@
-
 <div class="container">
   <div class="row">
-      <h4 class="bg-light">投稿一覧</h4>
+      <h4 class="bg-light">いいね一覧</h4>
 
       <table class ="table">
           <tr>
               <th>プロフィール画像</th>
               <th>名前</th>
               <th>投稿</th>
+              <th>いいね</th>
           </tr>
-          <% @posts.each do |posted| %>
+          <% @favorite_posts.each do |posted| %>
           <tr>
               <td><%= image_tag posted.customer.get_profile_image(80, 80) %></td>
               <td>
@@ -18,9 +18,12 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to admin_post_path(posted.id) do %>
+                <%= link_to post_path(posted.id) do %>
                   <%= posted.body %>
                 <% end %>
+              </td>
+              <td id="favorite_buttons_<%= posted.id %>">
+                <%= render "public/favorites/btn", posts: posted %>
               </td>
           </tr>
           <% end %>

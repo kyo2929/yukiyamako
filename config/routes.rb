@@ -25,7 +25,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   # 管理者用
   namespace :admin do
 
-    resources :posts, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :destroy ]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :prefectures, only: [:index, :edit, :create, :update]
     resources :ski_resorts, only: [:new, :index, :show, :create, :edit, :update]
@@ -48,6 +48,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get  'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch  'customers/withdraw' => 'customers#withdraw'
 
+    get 'customers/favorites' => 'customers#favorites'
 
 
 

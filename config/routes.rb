@@ -35,7 +35,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   # 顧客用
   scope module: :public do
-    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :prefecture, only: [:show]
     resources :ski_resorts, only: [:index, :show]
 

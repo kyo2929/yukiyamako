@@ -8,5 +8,9 @@ class Post < ApplicationRecord
   has_many_attached :image
 
   validates :body, presence:true, length: { maximum: 200 }
+  
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
+  end
 
 end

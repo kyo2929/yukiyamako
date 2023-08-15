@@ -59,3 +59,4 @@ gem 'kaminari','~> 1.2.1'
 gem 'rubocop', require: false                ##rubyに関わる構文チェック
 gem 'rubocop-performance', require: false    ##プロジェクトのパフォーマンスに関する構文規則チェック
 gem 'rubocop-rails', require: false          ##railsに関わる構文チェック
+gem 'jquery-rails'

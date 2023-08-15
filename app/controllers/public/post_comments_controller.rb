@@ -1,5 +1,5 @@
 class Public::PostCommentsController < ApplicationController
-  
+
   def create
     @post = Post.find(params[:post_id])
     comment = current_customer.post_comments.new(post_comment_params)
@@ -9,13 +9,13 @@ class Public::PostCommentsController < ApplicationController
   end
 
   def destroy
-    BookComment.find(params[:id]).destroy
+    PostComment.find(params[:id]).destroy
     redirect_to request.referer
   end
 
   private
 
   def book_comment_params
-    params.require(:book_comment).permit(:comment)
+    params.require(:post_comment).permit(:comment, :post_id)
   end
 end

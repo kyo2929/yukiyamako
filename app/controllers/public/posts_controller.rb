@@ -28,6 +28,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @customer = @post.customer
     @ski_resorts = SkiResort.all
+    @post_comment = PostComment.new
   end
 
   def edit

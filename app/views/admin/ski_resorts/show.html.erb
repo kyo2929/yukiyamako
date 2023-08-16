@@ -5,12 +5,18 @@
   　<div class="row">
     　  <!--写真-->
       <div class="mr-2">
-        <% if @ski_resort.image.attached? %>
-          <% image_tag @ski_resort.image.each do |image| %>
-            <%= image_tag image.variant(resize: '500x500') %>
-          <% end %>
-        <% end %>
+        <div class="swiper-container">
+          <div class= "swiper-wrapper img-index">
+            <% @ski_resort.images.each do |image| %>
+              <%= image_tag image, class: "swiper-slide index-img" %>
+            <% end %>
+          </div>
+          <div class="swiper-button-prev swiper-button-white"></div>
+          <div class="swiper-button-next swiper-button-white"></div>
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
+      
       <!--スキー場情報-->
       <div>
       <table>

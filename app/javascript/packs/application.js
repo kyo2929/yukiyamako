@@ -20,6 +20,14 @@ window.raty = function(elem,opt) {
   return raty;
 }
 
+require("@rails/ujs").start()
+//require("turbolinks").start()
+require("@rails/activestorage").start()
+require("channels")
+require('./preview')
+require('./swiper')
+
+
 window.$ = window.jQuery = require('jquery');
 
 Rails.start()

@@ -8,6 +8,7 @@
               <th>プロフィール画像</th>
               <th>名前</th>
               <th>投稿</th>
+              <th>レビュー</th>
           </tr>
           <% @posts.each do |posted| %>
           <tr>
@@ -22,6 +23,7 @@
                   <%= posted.body %>
                 <% end %>
               </td>
+              <td><%= render "public/posts/star", posts: posted %></td>
           </tr>
           <% end %>
       </table>

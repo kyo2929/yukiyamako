@@ -13,7 +13,7 @@
       </div>
       <!--投稿情報-->
       <div>
-      <table>
+      <table class="table">
         <tr>
           <th style="width:150px">投稿者名</th>
           <th style="width:260px"><%= @post.customer.name %></th>
@@ -29,6 +29,10 @@
               <%= @post.ski_resort.name %>
             <% end %>
           </th>
+        </tr>
+        <tr>
+          <th>レビュー</th>
+          <th><%= render "public/posts/star", posts: @post %></th>
         </tr>
         <tr>
           <th></th>

@@ -3,27 +3,31 @@
    <div class="my-3 ml-2">
     <%= flash[:notice] %>
       <%= form_with model: @customer,url: customers_information_path, local: true do |f| %>
-      
+
       <table>
         <tr>
           <td class="py-2">プロフィール画像</td>
           <td><%= f.file_field :profile_image, accept: "image/*" %></td>
+          <td></td>
         </tr>
         <tr>
           <td class="py-2">名前</td>
           <td class="pl-5">
             <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前" %>
           </td>
+          <td></td>
         </tr>
         <tr>
           <td class="py-2">自己紹介文</td>
           <td class="pl-5">
             <%= f.text_area :introduction, class: 'form-control introduction' %>
           </td>
+          <td></td>
         </tr>
         <tr>
-          <td class="py-5"></td>
-          <td class=" pl-5"><%= f.submit "編集内容を保存", class:'btn btn-success' %><%= link_to "退会する", customers_confirm_withdraw_path, class:"btn btn-danger offset-3" %></td>
+          <td></td>
+          <td class="py-2"><%= f.submit "編集内容を保存", class:'btn btn-success' %></td>
+          <td class=" pl-2"><%= link_to "退会する", customers_confirm_withdraw_path, class:"btn btn-danger" %></td>
         </tr>
       </table>
       <% end %>

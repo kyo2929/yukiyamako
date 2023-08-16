@@ -5,12 +5,11 @@
   <% unless @customer.guest_user? %>
    <div class="d-flex">
      <h4 class="my-auto col-2"><b>登録情報</b></h4>
-     <%= link_to "編集する", customers_information_edit_path, class:'btn btn-success' %>
+     <%= link_to "編集する", customers_information_edit_path, class:'btn btn-success my-auto col-2 mr-3' %>
+     <%= link_to "いいね一覧", customers_favorites_path(@customer), class:'btn btn-info my-auto col-2' %>
 　  </div>
   <%end%>
-    <div>
-      <%= link_to "いいね一覧", customers_favorites_path(@customer), class:'btn btn-info' %>
-    </div>
+
 
     <div class="table mb-3 ml-3">
       <table class="table-bordered">

@@ -15,7 +15,7 @@ class Public::PostCommentsController < ApplicationController
 
   private
 
-  def book_comment_params
+  def post_comment_params
     params.require(:post_comment).permit(:comment, :post_id)
   end
 end

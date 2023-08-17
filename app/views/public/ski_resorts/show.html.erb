@@ -1,16 +1,13 @@
 <div class="container">
-  <h4 class="bg-light text-center mt-4" style="width:150px">スキー場詳細</h3>
+  
+  
+  
+  
 
   <div class="col-md-9 ml-3 mx-auto">
+    
   　<div class="row">
-    　  <!--写真-->
-      <div class="mr-2">
-        <% if @ski_resort.image.attached? %>
-          <% image_tag @ski_resort.image.each do |image| %>
-            <%= image_tag image.variant(resize: '500x500') %>
-          <% end %>
-        <% end %>
-      </div>
+  　 <h4 class="bg-light text-center mt-4" style="width:150px">スキー場詳細</h3>
       <!--スキー場情報-->
       <div>
       <table>

@@ -17,8 +17,8 @@
           <%= form_with model: @ski_resort, url: admin_ski_resort_path(@ski_resort.id) do |f| %>
           <tr>
             <td>
-            <%= f.label :image, "スキー場画像" %>
-            <%= f.file_field :images, multiple: true  %>
+            <%= f.label :ski_resort_images, "スキー場画像" %>
+            <%= f.file_field :ski_resort_images, multiple: true  %>
             </td>
           </tr>
           <tr>

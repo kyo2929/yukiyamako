@@ -41,7 +41,7 @@ class Admin::SkiResortsController < ApplicationController
   private
 
   def ski_resort_params
-    params.require(:ski_resort).permit(:prefecture_id, :name, :introduction, :address, image: [])
+    params.require(:ski_resort).permit(:prefecture_id, :name, :introduction, :address, ski_resort_images: [])
   end
 
 

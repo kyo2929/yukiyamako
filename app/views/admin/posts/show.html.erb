@@ -1,45 +1,78 @@
-<div class="container">
-  <h4 class="bg-light text-center mt-4" style="width:150px">投稿詳細</h3>
+   　  <!--写真-->
 
-  <div class="col-md-9 ml-3 mx-auto">
-  　<div class="row">
-    　  <!--写真-->
-      <div class="mr-2">
-        <% if @post.image.attached? %>
-          <% @post.image.each do |image| %>
-            <%= image_tag image.variant(resize: '500x500') %>
-          <% end %>
-        <% end %>
-      </div>
+<% if @post.images.attached? %>
+  <div class="swiper-container">
+    <div class= "swiper-wrapper img-index">
+      <% @post.images.each do |image| %>
+        <%= image_tag image, class: "swiper-slide index-img swpeImg" %>
+      <% end %>
+    </div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+<% end %>
+
       <!--投稿情報-->
-      <div>
-      <table class="table">
-        <tr>
-          <th style="width:150px">投稿者名</th>
-          <th style="width:260px"><%= @post.customer.name %></th>
-        </tr>
-        <tr>
-          <th>投稿内容</th>
-          <th><%= @post.body %></th>
-        </tr>
-        <tr>
-          <th>スキー場</th>
-          <th>
-            <%= link_to ski_resort_path(@post.ski_resort_id) do %>
-              <%= @post.ski_resort.name %>
+
+<div class="container">
+  <h4 class="bg-light text-center mt-4" style="width:150px">投稿詳細</h4>
+    <div class="row">
+      <div class="col-7">
+        <table class="table">
+          <tr>
+            <th style="width:150px">投稿者名</th>
+            <th style="width:260px"><%= @post.customer.name %></th>
+          </tr>
+          <tr>
+            <th>投稿内容</th>
+            <th><%= @post.body %></th>
+          </tr>
+          <tr>
+            <th>スキー場</th>
+            <th>
+              <%= link_to admin_ski_resort_path(@post.ski_resort_id) do %>
+                <%= @post.ski_resort.name %>
+              <% end %>
+            </th>
+          </tr>
+          <tr>
+            <th>レビュー</th>
+            <th><%= render "public/posts/star", posts: @post %></th>
+          </tr>
+        </table>
+
+        <%= link_to "削除", admin_post_path(@post.id), class: 'btn btn-sm btn-danger ml-5', method: :delete %>
+
+      </div>
+
+      <div class="col-5">
+        <h4 class="bg-light text-center mt-4" style="width:150px">コメント一覧</h4>
+        <table class="table">
+          <% if @post.post_comments.exists? %>
+          <tr>
+            <th>ユーザー名</th>
+            <th>コメント</th>
+            <th></th>
+          </tr>
+
+          <% @post.post_comments.each do |post_comment| %>
+          <tr>
+            <td>
+              <%= post_comment.customer.name %>
+            </td>
+            <td>
+              <%= post_comment.comment %>
+            </td>
+            <% if post_comment.customer == current_customer %>
+            <td>
+              <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), class: 'btn btn-sm btn-danger', method: :delete %>
+            </td>
             <% end %>
-          </th>
-        </tr>
-        <tr>
-          <th>レビュー</th>
-          <th><%= render "public/posts/star", posts: @post %></th>
-        </tr>
-        <tr>
-          <th></th>
-          <th><%= link_to "削除", admin_post_path(@post), class: 'btn btn-sm btn-danger', method: :delete %></th>
-        </tr>
-      </table>
+          </tr>
+            <% end %>
+          <% end %>
+        </table>
       </div>
     </div>
-  </div>
 </div>

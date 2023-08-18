@@ -2,7 +2,7 @@
   <h3 class="bg-light d-inline-block mb-2 offset-1 p-1">会員情報編集</h3>
    <div class="my-3 ml-2">
     <%= flash[:notice] %>
-      <%= form_with model: @customer,url: customers_information_path, local: true do |f| %>
+      <%= form_with model: @customer,url: customer_path(@customer.id) do |f| %>
 
       <table>
         <tr>

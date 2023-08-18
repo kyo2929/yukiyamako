@@ -8,13 +8,15 @@
               <th>プロフィール画像</th>
               <th>名前</th>
               <th>投稿</th>
-              <th>レビュー</th>
+              <th>スキー場</th>
+              <th>投稿画像数</th>
+              <th>評価</th>
           </tr>
           <% @posts.each do |posted| %>
           <tr>
               <td><%= image_tag posted.customer.get_profile_image(80, 80) %></td>
               <td>
-                <%= link_to customers_mypage_path(posted.customer.id) do %>
+                <%= link_to admin_customer_path(posted.customer.id) do %>
                   <%= posted.customer.name %>
                 <% end %>
               </td>
@@ -23,6 +25,12 @@
                   <%= posted.body %>
                 <% end %>
               </td>
+              <td>
+                <%= link_to admin_ski_resort_path(posted.ski_resort_id) do %>
+                  <%= posted.ski_resort.name %>
+                <% end %>
+              </td>
+              <td><%= posted.post_comments.count %></td>
               <td><%= render "public/posts/star", posts: posted %></td>
           </tr>
           <% end %>

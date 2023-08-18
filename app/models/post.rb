@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :post_comments,  dependent: :destroy
   has_many :favorites,      dependent: :destroy
 
-  has_many_attached :image
+  has_many_attached :images
 
   validates :body, presence:true, length: { maximum: 200 }
   

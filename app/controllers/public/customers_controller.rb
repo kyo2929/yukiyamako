@@ -1,8 +1,8 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_guest_user, only: [:edit]
+  before_action :ensure_guest_user, only: [:edit, :new]
   def show
-    @customer = Customer.find(current_customer.id)
+    @customer = Customer.find(params[:id])
   end
 
   def edit
@@ -13,10 +13,10 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(current_customer.id)
     if @customer.update(customer_params)
       flash[:alert] ="更新しました"
-      redirect_to customers_mypage_path
+      redirect_to customer_path(@customer.id)
     else
       flash[:notice] = @customer.errors.full_messages
-      redirect_to customers_information_edit_path
+      redirect_to edit_customer_path(@customer.id)
     end
   end
 
@@ -33,7 +33,7 @@ class Public::CustomersController < ApplicationController
   def ensure_guest_user
     @customer = Customer.find(current_customer.id)
     if @customer.guest_user?
-      redirect_to root_path , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to root_path , notice: "ゲストユーザーはこのアクションは実行できません。"
     end
   end
 

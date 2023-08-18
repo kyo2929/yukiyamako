@@ -19,7 +19,6 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @customer = current_customer
     @posts = Post.all
     @ski_resorts = SkiResort.all
   end
@@ -56,7 +55,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit( :body, :star, :ski_resort_id, image: [], )
+    params.require(:post).permit( :body, :star, :ski_resort_id, images: [], )
   end
 
 end

@@ -42,7 +42,7 @@
 
          <%# customerがログイン時のヘッダー　%>
          <% if customer_signed_in? %>
-           <li class="nav-item"><%= link_to "マイページ", customers_mypage_path(current_customer.id), class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "マイページ", customer_path(current_customer.id), class: "btn btn-sm btn-outline-dark" %></li>
            <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: "btn btn-sm btn-outline-dark" %></li>
            <li class="nav-item"><%= link_to "スキー場一覧", ski_resorts_path, class: "btn btn-sm btn-outline-dark" %></li>
            <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-sm btn-outline-dark" %></li>

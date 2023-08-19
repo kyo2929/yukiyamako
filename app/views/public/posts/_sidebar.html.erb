@@ -1,0 +1,17 @@
+<table class="border border-dark mx-auto mt-3 w-100">
+  <tr class="border-bottom border-dark text-center">
+    <th>スキー場毎の投稿検索</th>
+  </tr>
+    <% ski_resorts.each do |ski_resort| %>
+    <tr>
+      <td class="text-left pl-3 py-1">
+        <%= link_to(ski_resort_path(ski_resort.id), class:"text-dark") do %>
+          <%= ski_resort.name %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+    <tr>
+      <td class="pb-5"><p></p></td>
+    </tr>
+</table>

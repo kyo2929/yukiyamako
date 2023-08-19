@@ -1,7 +1,19 @@
 
 <div class="container">
   <div class="row">
+
+    <!--サイドバー-->
+    <div class="col-2">
+
+    </div>
+
+    <!--投稿内容-->
+    <div class="col-9">
       <h4 class="bg-light">投稿一覧</h4>
+
+         <%= link_to '新しい順', admin_posts_path(latest: "true") %>
+         |<%= link_to '古い順', admin_posts_path(old: "true") %>
+         |<%= link_to '評価の高い順', admin_posts_path(star_count: "true") %>
 
       <table class ="table">
           <tr>
@@ -35,5 +47,6 @@
           </tr>
           <% end %>
       </table>
+    </div>
   </div>
 </div>

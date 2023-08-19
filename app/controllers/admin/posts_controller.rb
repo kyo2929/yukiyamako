@@ -1,8 +1,16 @@
 class Admin::PostsController < ApplicationController
   def index
-    @customer = current_customer
-    @posts = Post.all
-    @ski_resorts = SkiResort.all
+    if params[:latest]
+      @posts = Post.latest
+    elsif params[:old]
+      @posts = Post.old
+    elsif params[:star_count]
+      @posts = Post.star_count
+    else
+      @customer = current_customer
+      @posts = Post.all
+      @ski_resorts = SkiResort.all
+    end
   end
 
   def show

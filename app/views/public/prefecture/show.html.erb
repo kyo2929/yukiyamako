@@ -1,2 +1,20 @@
-<h1>Public::Prefecture#show</h1>
-<p>Find me in app/views/public/prefecture/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+  <!--サイドバー-->
+    <div class="col-md-2">
+      <%= render 'public/ski_resorts/sidebar', prefectures: @prefectures %>
+    </div>
+
+
+<!--ここからメイン-->
+    <div class="col-9 ml-5">
+    　<div class="p-0 d-flex">
+       <h4 class="text-left m-0"><b><%= @prefecture.name %>スキー場一覧</b></h4>
+      </div>
+    <!--一覧-->
+      <div class="base-container mw-xl">
+        <%= render 'public/ski_resorts/index', ski_resorts: @prefecture.ski_resorts %>
+      </div>
+    </div>
+  </div>
+</div>

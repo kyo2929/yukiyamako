@@ -50,7 +50,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'homes/about' => 'homes#about'
     get  'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch  'customers/withdraw' => 'customers#withdraw'
-
   end
 
 

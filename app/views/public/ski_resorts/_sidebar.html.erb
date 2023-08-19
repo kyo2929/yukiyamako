@@ -1,12 +1,12 @@
 <table class="border border-dark mx-auto mt-3 w-100">
   <tr class="border-bottom border-dark text-center">
-    <th>スキー場毎の投稿検索</th>
+    <th>都道府県検索</th>
   </tr>
-    <% ski_resorts.each do |ski_resort| %>
+    <% prefectures.each do |prefecture| %>
     <tr>
       <td class="text-left pl-3 py-1">
-        <%= link_to(ski_resort_path(ski_resort.id), class:"text-dark") do %>
-          <%= ski_resort.name %>
+        <%= link_to(prefecture_path(prefecture.id), class:"text-dark") do %>
+          <%= prefecture.name %>
         <% end %>
       </td>
     </tr>

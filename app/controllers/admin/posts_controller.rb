@@ -8,7 +8,7 @@ class Admin::PostsController < ApplicationController
       @posts = Post.star_count
     else
       @customer = current_customer
-      @posts = Post.all
+      @posts = Post.page(params[:page])
       @ski_resorts = SkiResort.all
     end
   end
@@ -24,5 +24,4 @@ class Admin::PostsController < ApplicationController
     @post.destroy
     redirect_to admin_posts_path
   end
-
 end

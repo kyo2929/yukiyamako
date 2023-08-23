@@ -15,7 +15,7 @@ class Admin::SkiResortsController < ApplicationController
   end
 
   def index
-    @ski_resorts = SkiResort.all
+    @ski_resorts = SkiResort.page(params[:page])
     @prefecture = Prefecture.all
   end
 
@@ -43,6 +43,4 @@ class Admin::SkiResortsController < ApplicationController
   def ski_resort_params
     params.require(:ski_resort).permit(:prefecture_id, :name, :introduction, :address, ski_resort_images: [])
   end
-
-
 end

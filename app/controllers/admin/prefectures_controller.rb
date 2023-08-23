@@ -1,14 +1,12 @@
 class Admin::PrefecturesController < ApplicationController
-
   def create
     @prefecture = Prefecture.new(prefecture_params)
     if @prefecture.save
-       redirect_to request.referer
+      redirect_to request.referer
     else
       @prefectures = Prefecture.all
       render :index
     end
-
   end
 
   def index
@@ -34,5 +32,4 @@ class Admin::PrefecturesController < ApplicationController
   def prefecture_params
     params.require(:prefecture).permit(:name)
   end
-
 end

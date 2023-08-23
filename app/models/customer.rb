@@ -11,13 +11,12 @@ class Customer < ApplicationRecord
   has_one_attached :profile_image
 
   with_options presence: true do
-     validates :name,
-      length: {minimum: 2, maximum: 20}, uniqueness: true
+    validates :name,
+              length: { minimum: 2, maximum: 20 }, uniqueness: true
+  end
 
-   end
-
-    validates :introduction,
-      length: { maximum: 50 }
+  validates :introduction,
+            length: { maximum: 50 }
 
   def active_for_authentication?
     super && (is_deleted == false)
@@ -26,7 +25,7 @@ class Customer < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
-      customer.name = "guestuser"
+      customer.name = 'guestuser'
     end
   end
 
@@ -41,5 +40,4 @@ class Customer < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
 end

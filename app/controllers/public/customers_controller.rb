@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_guest_user, only: [:edit, :new]
+  before_action :ensure_guest_user, only: %i[edit new]
   def show
     @customer = Customer.find(params[:id])
   end
@@ -12,7 +12,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(current_customer.id)
     if @customer.update(customer_params)
-      flash[:alert] ="更新しました"
+      flash[:alert] = '更新しました'
       redirect_to customer_path(@customer.id)
     else
       flash[:notice] = @customer.errors.full_messages
@@ -20,8 +20,7 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  def confirm_withdraw
-  end
+  def confirm_withdraw; end
 
   def withdraw
     @customer = Customer.find(current_customer.id)
@@ -32,14 +31,14 @@ class Public::CustomersController < ApplicationController
 
   def ensure_guest_user
     @customer = Customer.find(current_customer.id)
-    if @customer.guest_user?
-      redirect_to root_path , notice: "ゲストユーザーはこのアクションは実行できません。"
-    end
+    return unless @customer.guest_user?
+
+    redirect_to root_path, notice: 'ゲストユーザーはこのアクションは実行できません。'
   end
 
   def favorites
     @customer = Customer.find(current_customer.id)
-    favorites= Favorite.where(customer_id: @customer.id).pluck(:post_id)
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
   end
 
@@ -48,7 +47,4 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :email, :introduction, :profile_image)
   end
-
-
-
 end

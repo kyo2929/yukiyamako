@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      flash[:notice] = "投稿できました"
+      flash[:notice] = '投稿できました'
       redirect_to post_path(@post.id)
     else
       @posts = Post.all
@@ -26,7 +26,7 @@ class Public::PostsController < ApplicationController
     elsif params[:star_count]
       @posts = Post.star_count
     else
-      @posts = Post.all
+      @posts = Post.page(params[:page])
       @ski_resorts = SkiResort.all
     end
   end
@@ -46,7 +46,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = "投稿できました"
+      flash[:notice] = '投稿できました'
       redirect_to post_path(@post.id)
     else
       @ski_resorts = SkiResort.all
@@ -63,7 +63,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit( :body, :star, :ski_resort_id, images: [], )
+    params.require(:post).permit(:body, :star, :ski_resort_id, images: [])
   end
-
 end

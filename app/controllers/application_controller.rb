@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope.is_a?(Admin)
       admin_posts_path
     else
-      posts_path
+      customer_path(current_customer.id)
     end
   end
 

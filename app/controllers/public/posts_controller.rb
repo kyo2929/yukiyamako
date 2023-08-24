@@ -29,6 +29,8 @@ class Public::PostsController < ApplicationController
       @posts = Post.page(params[:page])
       @ski_resorts = SkiResort.all
     end
+
+    @posts = @posts.page(params[:page])
   end
 
   def show

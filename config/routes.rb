@@ -39,14 +39,18 @@ Rails.application.routes.draw do
     end
     resources :prefecture, only: [:show]
     resources :ski_resorts, only: %i[index show]
+
+    get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
+    patch 'customers/withdraw' => 'customers#withdraw'
+
     resources :customers, only: %i[show edit update] do
       member do
         get 'customers/favorites' => 'customers#favorites'
+
       end
     end
 
     get 'homes/about' => 'homes#about'
-    get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
-    patch 'customers/withdraw' => 'customers#withdraw'
+
   end
 end

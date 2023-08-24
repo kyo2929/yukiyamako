@@ -1,7 +1,6 @@
  <table class="table mt-3">
             <thead>
               <tr>
-                <th>スキー場id</th>
                 <th>スキー場名</th>
                 <th>紹介文</th>
                 <th>都道府県</th>
@@ -11,9 +10,6 @@
             <tbody>
             <% ski_resorts.each do |ski_resort| %>
               <tr>
-                <td>
-                  <%= ski_resort.id %>
-                </td>
                 <td>
                   <%= link_to ski_resort_path(ski_resort.id) do %>
                     <%= ski_resort.name %>

@@ -39,6 +39,7 @@
          <% end %>
        <% else %>
 
+
          <%# customerがログイン時のヘッダー　%>
          <% if customer_signed_in? %>
            <li class="nav-item"><%= link_to "マイページ", customer_path(current_customer.id), class: "btn btn-sm btn-outline-dark" %></li>

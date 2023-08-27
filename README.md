@@ -24,7 +24,8 @@
 - スキー場に行った人の感想を知りたいとき
 
 ## 設計書
-後ほど作成予定
+ER図
+- https://drive.google.com/file/d/11P_VYUC6ZZWg77pQu40lHrKb2CujaP-w/view?usp=sharing
 
 ## 開発環境
 - Mac OS : 13.4.1 (c)（22F770820d）
@@ -32,6 +33,3 @@
 - フレームワーク : Ruby on Rails
 - JSライブラリ : JQuery
 - IDE : Cloud9
-
-## 使用素材
-あった後ほど記載

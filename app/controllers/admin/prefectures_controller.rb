@@ -1,4 +1,6 @@
 class Admin::PrefecturesController < ApplicationController
+  before_action :authenticate_admin!
+  
   def create
     @prefecture = Prefecture.new(prefecture_params)
     if @prefecture.save

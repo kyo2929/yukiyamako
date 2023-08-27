@@ -1,6 +1,8 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_guest_user, only: %i[edit new]
+  before_action :is_matching_login_customer, only: [:edit, :update]
+  
   def show
     @customer = Customer.find(params[:id])
   end
@@ -47,4 +49,12 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :email, :introduction, :profile_image)
   end
+  
+  def is_matching_login_customer
+    customer = Customer.find(params[:id])
+    unless customer.id == current_customer.id
+      redirect_to posts_path
+    end
+  end
+  
 end

@@ -1,4 +1,6 @@
 class Admin::SkiResortsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def new
     @ski_resort = SkiResort.new
     @prefecture = Prefecture.all

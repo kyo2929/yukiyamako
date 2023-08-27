@@ -1,8 +1,22 @@
 class Admin::SkiResortsController < ApplicationController
   before_action :authenticate_admin!
   
+  def index
+    @ski_resorts = SkiResort.page(params[:page])
+    @prefecture = Prefecture.all
+  end
+
+  def show
+    @ski_resort = SkiResort.find(params[:id])
+  end
+
   def new
     @ski_resort = SkiResort.new
+    @prefecture = Prefecture.all
+  end
+
+  def edit
+    @ski_resort = SkiResort.find(params[:id])
     @prefecture = Prefecture.all
   end
 
@@ -14,20 +28,6 @@ class Admin::SkiResortsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def index
-    @ski_resorts = SkiResort.page(params[:page])
-    @prefecture = Prefecture.all
-  end
-
-  def show
-    @ski_resort = SkiResort.find(params[:id])
-  end
-
-  def edit
-    @ski_resort = SkiResort.find(params[:id])
-    @prefecture = Prefecture.all
   end
 
   def update

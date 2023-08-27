@@ -1,25 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :is_matching_login_customer, only: [:edit, :update]
   
-  def new
-    @post = Post.new
-    @ski_resorts = SkiResort.all
-  end
-
-  def create
-    @post = Post.new(post_params)
-    @post.customer_id = current_customer.id
-    if @post.save
-      flash[:notice] = '投稿できました'
-      redirect_to post_path(@post.id)
-    else
-      @posts = Post.all
-      @ski_resort = SkiResort.all
-      @customer = current_customer
-      render :index
-    end
-  end
-
   def index
     if params[:latest]
       @posts = Post.latest
@@ -42,9 +23,28 @@ class Public::PostsController < ApplicationController
     @post_comment = PostComment.new
   end
 
+  def new
+    @post = Post.new
+    @ski_resorts = SkiResort.all
+  end
+
   def edit
     @post = Post.find(params[:id])
     @ski_resorts = SkiResort.all
+  end
+
+  def create
+    @post = Post.new(post_params)
+    @post.customer_id = current_customer.id
+    if @post.save
+      flash[:notice] = '投稿できました'
+      redirect_to post_path(@post.id)
+    else
+      @posts = Post.all
+      @ski_resort = SkiResort.all
+      @customer = current_customer
+      render :index
+    end
   end
 
   def update

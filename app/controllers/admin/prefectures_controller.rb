@@ -1,6 +1,15 @@
 class Admin::PrefecturesController < ApplicationController
   before_action :authenticate_admin!
   
+  def index
+    @prefecture = Prefecture.new
+    @prefectures = Prefecture.all
+  end
+
+  def edit
+    @prefecture = Prefecture.find(params[:id])
+  end
+
   def create
     @prefecture = Prefecture.new(prefecture_params)
     if @prefecture.save
@@ -9,15 +18,6 @@ class Admin::PrefecturesController < ApplicationController
       @prefectures = Prefecture.all
       render :index
     end
-  end
-
-  def index
-    @prefecture = Prefecture.new
-    @prefectures = Prefecture.all
-  end
-
-  def edit
-    @prefecture = Prefecture.find(params[:id])
   end
 
   def update

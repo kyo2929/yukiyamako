@@ -1,4 +1,5 @@
 class Public::SkiResortsController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @ski_resorts = SkiResort.page(params[:page])
     @prefectures = Prefecture.all

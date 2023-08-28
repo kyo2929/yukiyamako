@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_customer!
   before_action :is_matching_login_customer, only: [:edit, :update]
-  
+
   def index
     if params[:latest]
       @posts = Post.latest
@@ -69,12 +70,12 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:body, :star, :ski_resort_id, images: [])
   end
-  
+
   def is_matching_login_customer
     customer = Customer.find(params[:id])
     unless customer.id == current_customer.id
       redirect_to posts_path
     end
   end
-  
+
 end

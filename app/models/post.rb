@@ -6,9 +6,9 @@ class Post < ApplicationRecord
 
   has_many_attached :images
 
-  validates :body, presence: true, length: { maximum: 200 }
+  validates :body,          presence: true, length: { maximum: 200 }
   validates :ski_resort_id, presence: true
-  validates :star, presence: true
+  validates :star,          presence: true
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }

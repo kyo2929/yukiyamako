@@ -10,10 +10,7 @@ class Customer < ApplicationRecord
 
   has_one_attached :profile_image
 
-  with_options presence: true do
-    validates :name,
-              length: { minimum: 2, maximum: 20 }, uniqueness: true
-  end
+    validates :name,presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
   validates :introduction,
             length: { maximum: 50 }

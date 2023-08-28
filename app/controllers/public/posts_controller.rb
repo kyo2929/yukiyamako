@@ -72,8 +72,9 @@ class Public::PostsController < ApplicationController
   end
 
   def is_matching_login_customer
-    customer = Customer.find(params[:id])
-    unless customer.id == current_customer.id
+    posts = Post.find(params[:id])
+    @customer = posts.customer
+    unless @customer.id == current_customer.id
       redirect_to posts_path
     end
   end

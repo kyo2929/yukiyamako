@@ -42,9 +42,9 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post.id)
     else
       @posts = Post.all
-      @ski_resort = SkiResort.all
+      @ski_resorts = SkiResort.all
       @customer = current_customer
-      render :index
+      render :new
     end
   end
 

@@ -1,57 +1,57 @@
 <header>
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+ <nav class="navbar  navbar-dark bg-dark">
+
+ <!--Navbar-->
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+ </button>
+
  <!--ロゴ-->
- <div>
+  <a class="navbar-brand">
    <%= link_to root_path do %>
    　<%= image_tag 'logo.png', :size => '120x120' %>
    <% end %>
- </div>
+ </a>
 
- <!--ようこそ-->
- <% if customer_signed_in? %>
- <div class="mx-auto col-4">
-   <p class="my-auto text-right">ようこそ、<%= customer.name %>さん！</p>
- </div>
- <% else %>
- <div class="mx-auto col-6"> </div>
- <% end %>
-
- <!--リンク＆サーチエリア-->
- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
- </button>
- <div class="block">
-   <div class="collapse navbar-collapse row" id="navbarNavDropdown">
-     <ul class="navbar-nav header-button">
+   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+     <ul class="navbar-nav mr-auto">
        <% if request.fullpath.include? "/admin" %>
          <%# adminがログイン時のヘッダー %>
          <% if admin_signed_in? %>
-           <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "会員一覧",  admin_customers_path, class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "スキー場一覧", admin_ski_resorts_path, class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "都道府県一覧", admin_prefectures_path, class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: "text-light" %></li>
+           <li class="nav-item"><%= link_to "会員一覧",  admin_customers_path, class: "text-light" %></li>
+           <li class="nav-item"><%= link_to "スキー場一覧", admin_ski_resorts_path, class: "text-light" %></li>
+           <li class="nav-item"><%= link_to "都道府県一覧", admin_prefectures_path, class: "text-light" %></li>
+           <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-light" %></li>
          <%# adminがログアウト時のヘッダー　%>
          <% else %>
-           <li class="nav-item"><%= link_to "About", homes_about_path, class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "ログイン", new_admin_session_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "About", homes_about_path, class: "text-light" %></li>
+           <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "btext-light" %></li>
+           <li class="nav-item"><%= link_to "ログイン", new_admin_session_path, class: "text-light" %></li>
          <% end %>
        <% else %>
 
 
          <%# customerがログイン時のヘッダー　%>
          <% if customer_signed_in? %>
-           <li class="nav-item"><%= link_to "マイページ", customer_path(current_customer.id), class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "スキー場一覧", ski_resorts_path, class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-sm btn-outline-dark" %></li>
+            <!--マイページ-->
+            <% if customer_signed_in? %>
+              <p class="text-light">
+               <%= customer.name %><br>
+              </p>
+             <li class="nav-item"><%= link_to "マイページ", customer_path(current_customer.id), class: "text-light" %></li>
+            <% else %>
+             <li class="nav-item"><%= link_to "マイページ", customer_path(current_customer.id), class: "text-light" %></li>
+            <% end %>
+           <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: "text-light" %></li>
+           <li class="nav-item"><%= link_to "スキー場一覧", ski_resorts_path, class: "text-light" %></li>
+           <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "text-light" %></li>
          <%# customerログアウト時のヘッダー　%>
          <% else %>
-         　 <li class="nav-item"><%= link_to "About", homes_about_path, class:"btn btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: "btn btn-sm btn-outline-dark" %></li>
-           <li class="nav-item"><%= link_to "ゲストログイン", customers_guest_sign_in_path, class: "btn btn-sm btn-outline-dark", method: :post %></li>
+         　 <li class="nav-item"><%= link_to "About", homes_about_path, class:"text-light" %></li>
+           <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "text-light" %></li>
+           <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: "text-light" %></li>
+           <li class="nav-item"><%= link_to "ゲストログイン", customers_guest_sign_in_path, class: "text-light", method: :post %></li>
          <% end %>
        <% end %>
      </ul>

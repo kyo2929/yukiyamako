@@ -5,56 +5,72 @@
   <% end %>
 </p>
 
-<div class="container">
-  <div class="row">
-
-    <!--ここからメイン-->
-    <div class="col-9">
-      <h4 class="bg-light">投稿一覧</h4>
-
        <%= link_to '新しい順', posts_path(latest: "true") %>
        |<%= link_to '古い順', posts_path(old: "true") %>
        |<%= link_to '評価の高い順', posts_path(star_count: "true") %>
 
-      <table class ="table">
-          <tr>
-              <th>プロフィール画像</th>
-              <th>名前</th>
-              <th>投稿</th>
-              <th>スキー場</th>
-              <th>投稿画像数</th>
-              <th>いいね</th>
-              <th>コメント数</th>
-              <th>評価</th>
-          </tr>
-          <% @posts.each do |posted| %>
-          <tr>
-              <td><%= image_tag posted.customer.get_profile_image(80, 80) %></td>
-              <td>
-                <%= link_to customer_path(posted.customer.id) do %>
-                  <%= posted.customer.name %>
+
+<div class="texts-wrapper">
+   <div class="contents-title text-center">
+     <h3>投稿一覧</h3>
+     <div class="row">
+       <% @posts.each do |posted| %>
+         <div class="col-12 col-md-6 col-lg-4">
+           <div class="card">
+
+          <div class="swiper-container">
+            <div class= "swiper-wrapper img-index">
+            <% if posted.images.attached? %>
+              <% if posted.images.length < 2 %>
+                <% posted.images.each do |image| %>
+                  <%= image_tag image, class: "post-img"%>
                 <% end %>
-              </td>
-              <td>
-                <%= link_to post_path(posted.id) do %>
-                  <%= posted.body %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to ski_resort_path(posted.ski_resort_id) do %>
-                  <%= posted.ski_resort.name %>
-                <% end %>
-              </td>
-              <td><%= posted.images.count %>枚</td>
-              <td id="favorite_buttons_<%= posted.id %>">
-                <%= render "public/favorites/btn", posts: posted %>
-              </td>
-              <td><%= posted.post_comments.count %></td>
-              <td><%= render "star", posts: posted %></td>
-          </tr>
-          <% end %>
-      </table>
-    </div>
-  </div>
+              <% else %>
+                    <% posted.images.each do |image| %>
+                      <div class="swiper-slide">
+                        <%= image_tag image, class: " index-img PostSwipe" %>
+                      </div>
+                    <% end %>
+                  <div class="swiper-button-prev swiper-button-white"></div>
+                  <div class="swiper-button-next swiper-button-white"></div>
+                  <div class="swiper-pagination"></div>
+              <% end %>
+            <% else %>
+              <div class="swiper-slide">
+                <img src="/assets/no_image.jpg">
+              </div>
+            <% end %>
+            </div>
+          </div>
+
+
+               <div class="card-body">
+                 <p class="card-title">
+                  <%= link_to customer_path(posted.customer.id) do %>
+                    <%= posted.customer.name %>
+                  <% end %>
+                 </p>
+                 <p>
+                  <%= link_to post_path(posted.id) do %>
+                    <%= posted.body %>
+                  <% end %>
+                 </p>
+                 <p>
+                   <%= link_to ski_resort_path(posted.ski_resort_id) do %>
+                     <%= posted.ski_resort.name %>
+                   <% end %>
+                 </p>
+                 <p>
+                   <%= render "star", posts: posted %>
+                 </p>
+                 <p id="favorite_buttons_<%= posted.id %>">
+                   <%= render "public/favorites/btn", posts: posted %>
+                 </p>
+               </div>
+           </div>
+         </div>
+       <% end %>
+     </div>
+   </div>
   <%= paginate @posts %>
 </div>

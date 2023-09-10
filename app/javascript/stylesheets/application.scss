@@ -4,8 +4,59 @@
   width: 100% !important;
   height: 600px !important;
 }
+
+.swiper-container {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+  height: 40vw;
+  max-height: 300px; //最大の高さ
+  min-height: 300px; //最小の高さ
+
+  .swiper-slide {
+    text-align: center;
+    line-height: 1;
+    display: flex;
+    align-items: flex-start; //画像の高さを統一させない
+    justify-content: center; //左右の中央揃え
+
+    img {
+      display: inline; //念のため
+      width: auto; //念のため
+      max-width: 100%;
+      max-height: 100%;
+      align-self: center; //上下の中央揃え
+    }
+  }
+}
+
 .main-container {
   background-image: url('/snow.jpg');
   background-size: cover;
   height: 600px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* フッタと同じ高さに設定 */
+  margin-bottom: 60px;
+
+  /* 一番下までスクロールした時の余白 */
+  padding-bottom: 0;
+}
+
+.hoge_footer {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 0;
+  width: 100%;
+
+  /* フッタの高さ */
+  height: 60px;
+  background: #000000;
+  color: #000;
 }

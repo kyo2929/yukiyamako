@@ -25,7 +25,7 @@ window.raty = function(elem,opt) {
 // require("@rails/activestorage").start()
 require("channels")
 require('./swiper')
-
+require('./preview')
 
 window.$ = window.jQuery = require('jquery');
 

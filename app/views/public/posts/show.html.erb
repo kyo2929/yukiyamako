@@ -4,16 +4,17 @@
         <% if @post.images.attached? %>
             <div class="swiper-container">
               <div class= "swiper-wrapper img-index">
-                <div class="swiper-slide">
                   <% @post.images.each do |image| %>
-                    <%= image_tag image, class: " index-img " %>
+                    <div class="swiper-slide">
+                      <%= image_tag image, class: " index-img " %>
+                    </div>
                   <% end %>
-                </div>
               </div>
-            <div class="swiper-pagination swiper-pagination-white"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+              <div class="swiper-pagination swiper-pagination-white"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
             </div>
+            
         <% end %>
  
       <!--投稿情報-->

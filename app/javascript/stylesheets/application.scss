@@ -1,6 +1,9 @@
 @use '~bootstrap/scss/bootstrap';
 
-
+.new-img{
+  width: 400px;
+  object-fit: cover;
+}
 
 .swiper-container {
   position: relative;
@@ -28,7 +31,7 @@
 }
 
 .main-container {
-  background-image: url('/snow.jpg');
+  background-image: imageurl('/snow.jpg');
   background-size: cover;
   height: 600px;
 }

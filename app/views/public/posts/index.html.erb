@@ -21,7 +21,11 @@
               <% if posted.images.attached? %>
                 <% if posted.images.length < 2 %>
                   <% posted.images.each do |image| %>
-                    <%= image_tag image, class: "post-img"%>
+                    <div class= "swiper-wrapper img-index">
+                      <div class="swiper-slide">
+                        <%= image_tag image, class: "post-img"%>
+                      </div>
+                    </div>
                   <% end %>
                 <% else %>
                   <div class= "swiper-wrapper img-index">
@@ -37,7 +41,7 @@
                 <% end %>
               <% else %>
                 <div class="swiper-slide">
-                  <image-url src="/assets/no_image.jpg">
+                  <%= image_tag 'no_image.jpg' %>
                 </div>
               <% end %>
             </div>

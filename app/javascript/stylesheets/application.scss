@@ -1,10 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
 
-.new-img{
-  width: 400px;
-  object-fit: cover;
-}
-
 .swiper-container {
   position: relative;
   overflow: hidden;
@@ -30,10 +25,12 @@
   }
 }
 
+
+
 .main-container {
-  background-image: image-url('/snow.jpg');
+  background-image: url("/snow.jpg");
   background-size: cover;
-  height: 600px;
+  height: 750px;
 }
 
 html {
@@ -49,14 +46,3 @@ body {
   padding-bottom: 0;
 }
 
-.hoge_footer {
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 0;
-  width: 100%;
-
-  /* フッタの高さ */
-  height: 60px;
-  background: #000000;
-  color: #000;
-}

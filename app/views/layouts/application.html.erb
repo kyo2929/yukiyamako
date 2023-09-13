@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <!--swiperの記述-->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
@@ -18,9 +18,9 @@
     <div class="wrapper">
       <header class="border-bottom border-dark mb-2"><%= render 'layouts/header', customer: current_customer %></header>
       <main><%= yield %></main>
-      <footer class="border-top border-dark"></footer>
+      <footer class="border-top border-dark bg-dark mt-2"></footer>
     </div>
-    
+
     <!--swiperの記述-->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </body>

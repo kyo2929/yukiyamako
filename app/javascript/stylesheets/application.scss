@@ -1,5 +1,65 @@
 @use '~bootstrap/scss/bootstrap';
 
+
+
+
+
+//top 画面のcss
+.c-bnr {
+  background-image: url("/snow.jpg");
+  background-size: cover;
+  height: 750px;
+}
+
+.c-bnr.bg {
+  position: relative;
+  overflow: hidden;
+}
+.c-bnr.bg::before,
+.c-bnr.bg::after {
+  content: "";
+  display: block;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  margin: auto;
+  transition: .3s cubic-bezier(0.45, 0, 0.55, 1);
+  opacity: 0;
+}
+.c-bnr.bg::before {
+  background: rgba(224, 255, 255, .6);
+  width: 100%;
+  height: 100%;
+}
+.c-bnr.bg::after {
+  color: #fff;
+  content: "ようこそ雪山子へ";
+  font-size: 50px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+}
+
+.c-bnr.bg:hover::before,
+.c-bnr.bg:hover::after {
+  opacity: 1;
+}
+
+//ヘッダーのボタン
+.c-btn.press {
+  box-shadow: 0 4px 0 #ffffff; // ボタンの影
+}
+.c-btn.press:hover {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+//swiperのcss
 .swiper-container {
   position: relative;
   overflow: hidden;
@@ -25,24 +85,7 @@
   }
 }
 
-
-
-.main-container {
-  background-image: url("/snow.jpg");
-  background-size: cover;
-  height: 750px;
-}
-
 html {
   position: relative;
   min-height: 100%;
 }
-
-body {
-  /* フッタと同じ高さに設定 */
-//   margin-bottom: 60px;
-
-//   /* 一番下までスクロールした時の余白 */
-//   padding-bottom: 0;
- }
-

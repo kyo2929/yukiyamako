@@ -1,18 +1,28 @@
-
-<p class="offset-9">
-  <%= link_to new_post_path do %>
-    <i class="fa-solid fa-circle-plus fa-2xl"></i>
-  <% end %>
-</p>
-
-       <%= link_to '新しい順', posts_path(latest: "true") %>
-       |<%= link_to '古い順', posts_path(old: "true") %>
-       |<%= link_to '評価の高い順', posts_path(star_count: "true") %>
-
-
 <div class="texts-wrapper">
    <div class="contents-title text-center">
      <h3>投稿一覧</h3>
+
+     <div class="row m-5">
+
+       <div class="c-btns press">
+         <%= link_to '新しい順', posts_path(latest: "true"), class: 'text-light' %>
+       </div>
+
+       <div class="c-btns press ml-1">
+         <%= link_to '古い順', posts_path(old: "true"), class: 'text-light' %>
+       </div>
+
+       <div class="c-btns press ml-1">
+         <%= link_to '評価の高い順', posts_path(star_count: "true"), class:'text-light' %>
+       </div>
+
+       <div class="ml-5">
+         <%= link_to new_post_path do %>
+           <i class="fa-solid fa-circle-plus fa-4x" style="color: #000000;"></i>
+         <% end %>
+       </div>
+     </div>
+
      <div class="row">
        <% @posts.each do |posted| %>
          <div class="col-12 col-md-6 col-lg-4">

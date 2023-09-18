@@ -26,7 +26,6 @@
          <%# adminがログアウト時のヘッダー　%>
          <% else %>
            <li class="nav-item"><%= link_to "About", homes_about_path, class: "text-light" %></li>
-           <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "btext-light" %></li>
            <li class="nav-item"><%= link_to "ログイン", new_admin_session_path, class: "text-light" %></li>
          <% end %>
        <% else %>
